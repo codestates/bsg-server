@@ -1,0 +1,34 @@
+{
+  "name": "bsg-server",
+  "version": "1.0.0",
+  "description": "'Hello Hello' 테스트입니다.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuJaeWoo/bsg-server.git"
+  },
+  "author": "yuJaeWoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuJaeWoo/bsg-server/issues"
+  },
+  "homepage": "https://github.com/yuJaeWoo/bsg-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "pm2": "^4.5.0",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "cookie-parser": "^1.4.5",
+    "sequelize-cli": "^6.2.0"
+  }
+}
