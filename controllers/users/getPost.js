@@ -1,0 +1,1 @@
+// Component 에서 getPost 요청, 이후 get
