@@ -10,7 +10,9 @@ const app = express();
 const controllers = require("./controllers");
 
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: false })); // extended 옵션의 경우, true일 경우, 객체 형태로 전달된 데이터내에서 또다른 중첩된 객체를 허용한다는 말이며, false인 경우에는 허용하지 않는 다는 의미이다.
+
 app.use(
   cors({
     origin: ["https://localhost:3000"],
@@ -21,8 +23,19 @@ app.use(
 
 app.use(cookieParser());
 app.post("/login", controllers.login);
+app.post("/logout", controllers.logOut);
+app.post("/postComment", controllers.postComment);
+app.post("/postContent", controllers.postContent);
+app.post("/signUp", controllers.signUp);
+app.post("/signOut", controllers.signOut);
+app.post("/deleteComment", controllers.deleteComment);
+app.post("/deleteContent", controllers.deleteContent);
+app.get("/getUserInfo", controllers.getUserInfo);
+app.get("/getComment", controllers.getComment);
+app.get("/getContent", controllers.getContent);
 app.get("/accesstokenrequest", controllers.accessTokenRequest);
-app.get("/refreshtokenrequest", controllers.refreshTokenRequest);
+
+
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
@@ -32,6 +45,8 @@ const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
 let server;
 if(fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")){
+
+
   const privateKey = fs.readFileSync(__dirname + "/key.pem", "utf8");
   const certificate = fs.readFileSync(__dirname + "/cert.pem", "utf8");
   const credentials = { key: privateKey, cert: certificate };
@@ -42,4 +57,6 @@ if(fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")){
 } else {
   server = app.listen(HTTPS_PORT)
 }
+
 module.exports = httpsServer;
+
