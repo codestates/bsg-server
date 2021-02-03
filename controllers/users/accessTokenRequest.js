@@ -1,5 +1,5 @@
 const { isAuthorized } = require('../tokenFunctions');
-const { User } = require('../../models');
+const { user } = require('../../models');
 
 module.exports = (req, res) => {
   const accessTokenData = isAuthorized(req);
@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     return res.json({ data: null, message: 'invalid access token' });
   }
   const { userId } = accessTokenData;
-  User.findOne({ where: { userId } })
+  user.findOne({ where: { userId } })
     .then((data) => {
       if (!data) {
         // return res.status(401).send({ data: null, message: 'not authorized' });

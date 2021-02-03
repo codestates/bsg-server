@@ -1,9 +1,7 @@
 module.exports = (req, res) => {
-    if (!req.cookies.email)
-      res.status(400).json({ data: null, message: 'not authorized' });
-    else {
-      res.clearCookie('email');
-      res.json({ data: null, message: 'ok' });
-    }
-
+    req.cookies.set('access_token', null, {
+      maxAge: 0,
+      httpOnly: true
+    });
+    res.status(200).send({message: 'logout successfully'})
 };
