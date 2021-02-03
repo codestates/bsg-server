@@ -1,16 +1,14 @@
 const { User } = require('../../models');
 const {
   generateAccessToken,
-  generateRefreshToken,
-  sendRefreshToken,
   sendAccessToken,
 } = require('../tokenFunctions');
 
 module.exports = (req, res) => {
-  const { userId, password } = req.body;
+  const { email, password } = req.body;
   User.findOne({
     where: {
-      userId,
+      email,
       password,
     },
   })
@@ -21,9 +19,7 @@ module.exports = (req, res) => {
       }
       delete data.dataValues.password;
       const accessToken = generateAccessToken(data.dataValues);
-      const refreshToken = generateRefreshToken(data.dataValues);
 
-      sendRefreshToken(res, refreshToken);
       sendAccessToken(res, accessToken);
     })
     .catch((err) => {

@@ -11,6 +11,7 @@ const controllers = require("./controllers");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 app.use(
   cors({
     origin: ["https://localhost:3000"],
@@ -20,8 +21,19 @@ app.use(
 );
 app.use(cookieParser());
 app.post("/login", controllers.login);
+app.post("/logout", controllers.logOut);
+app.post("/postComment", controllers.postComment);
+app.post("/postContent", controllers.postContent);
+app.post("/signUp", controllers.signUp);
+app.post("/signOut", controllers.signOut);
+app.post("/deleteComment", controllers.deleteComment);
+app.post("/deleteContent", controllers.deleteContent);
+app.get("/getUserInfo", controllers.getUserInfo);
+app.get("/getComment", controllers.getComment);
+app.get("/getContent", controllers.getContent);
 app.get("/accesstokenrequest", controllers.accessTokenRequest);
-app.get("/refreshtokenrequest", controllers.refreshTokenRequest);
+
+
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 
