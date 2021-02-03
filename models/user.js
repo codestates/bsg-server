@@ -11,8 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+    this.hasMany(models.userPost)
+    this.hasMany(models.userComment)
     }
-  };
+  }
   user.init({
     nickname: DataTypes.STRING,
     email: DataTypes.STRING,
@@ -21,5 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'user',
   });
+
+
   return user;
 };

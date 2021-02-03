@@ -3,7 +3,6 @@ const fs = require("fs");
 const https = require("https");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
 const express = require("express");
 const app = express();
 
@@ -15,7 +14,7 @@ app.use(express.urlencoded({ extended: false })); // extended 옵션의 경우, 
 
 app.use(
   cors({
-    origin: ["https://localhost:3000"],
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
   })
@@ -43,20 +42,17 @@ const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 // 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
 // 파일 존재여부를 확인하는 폴더는 서버 폴더의 package.json이 위치한 곳입니다.
 
-let server;
-if(fs.existsSync("./key.pem") && fs.existsSync("./cert.pem")){
+const server = https
+    .createServer(
+        {
+          key: fs.readFileSync("/Users/yuJaeWu" + "/key.pem"),
+          cert: fs.readFileSync("/Users/yuJaeWu" + "/cert.pem"),
+        },
+        app
+    )
+    .listen(HTTPS_PORT, () => {
+      console.log(`server listen in ${HTTPS_PORT}`);
+    });
 
-
-  const privateKey = fs.readFileSync(__dirname + "/key.pem", "utf8");
-  const certificate = fs.readFileSync(__dirname + "/cert.pem", "utf8");
-  const credentials = { key: privateKey, cert: certificate };
-
-  server = https.createServer(credentials, app);
-  server.listen(HTTPS_PORT, () => console.log("server runnning"));
-
-} else {
-  server = app.listen(HTTPS_PORT)
-}
-
-module.exports = httpsServer;
+module.exports = server;
 

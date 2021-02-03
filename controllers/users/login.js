@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { user } = require('../../models');
 const {
   generateAccessToken,
   sendAccessToken,
@@ -7,13 +7,14 @@ const {
 module.exports = (req, res) => {
 
   const { email, password } = req.body;
-  User.findOne({
+  user.findOne({
     where: {
       email,
       password,
     },
   })
     .then((data) => {
+      console.log(data)
       if (!data) {
         // return res.status(401).send({ data: null, message: 'not authorized' });
         return res.json({ data: null, message: 'not authorized' });
