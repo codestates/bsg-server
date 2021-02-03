@@ -5,6 +5,7 @@ const {
 } = require('../tokenFunctions');
 
 module.exports = (req, res) => {
+
   const { email, password } = req.body;
   user.findOne({
     where: {
@@ -20,7 +21,6 @@ module.exports = (req, res) => {
       }
       delete data.dataValues.password;
       const accessToken = generateAccessToken(data.dataValues);
-
       sendAccessToken(res, accessToken);
     })
     .catch((err) => {
