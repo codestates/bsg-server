@@ -1,17 +1,26 @@
-const { userContent } = require('../../models');
 
-module.exports =  async (req, res) => {
+const { user, usercontent } = require('../../models');
 
-  // HINT: 쿠키에 유저정보가 존재하는지 한번 다음줄에 console.log(req.cookies)를 작성해 보세요. 물론 로그인 이후 GET /users/userinfo 요청을 하셔야 합니다.
-  console.log('얍'+ req.cookies)
-  if (!req.cookies.email) {
-    res.status(401).send({ data: null, message: 'not authorized' });
+// COMPLETED
+
+module.exports =  async (req, res) => { //req내부에는 user.id가 있다.
+  const deleteUser = await user.findOne({
+    where: {id: req.body.id}
+  })
+
+  // 누른 사람의 아이디가
+
+  const userContentData = await usercontent.findOne({
+    where: {userid: deleteUser.id}
+  })
+  
+  if (deleteUser.id !== userContentData.userid) {
+    res.status(400).json({message: "no"})
   } else {
-    let userInfo = await Users.findOne({
-      where: { email: req.cookies.email },
-    });
-
-    res.json({ data: userInfo, message: 'ok' });
+    usercontent.destroy({
+      where:({id: req.body.contentId})
+    })
+    .then(() => {
+      res.json({message:"ok"})
+    })
   }
-
-};

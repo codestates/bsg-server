@@ -1,28 +1,15 @@
-const { User } = require('../../models');
-const {
-  generateAccessToken,
-  sendAccessToken,
-} = require('../tokenFunctions');
+const { userComment } = require('../../models');
 
-module.exports = (req, res) => {
-  const { email, password } = req.body;
-  User.findOne({
-    where: {
-      email,
-      password,
-    },
+module.exports = async(req, res) => {
+  const { userid, content } = req.body;
+
+
+  await userComment.create({
+    userid: `${userid}`, content: `${content}`
   })
-      .then((data) => {
-        if (!data) {
-          // return res.status(401).send({ data: null, message: 'not authorized' });
-          return res.json({ data: null, message: 'not authorized' });
-        }
-        delete data.dataValues.password;
-        const accessToken = generateAccessToken(data.dataValues);
-
-        sendAccessToken(res, accessToken);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  .then(() => {
+    res.status(200).send({message: "comment ok"})
+  }).catch(err => {
+    res.status(401).send({message: "You do not have permission to access the comment"})
+  })
 };

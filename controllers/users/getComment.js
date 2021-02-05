@@ -1,17 +1,12 @@
-const { user } = require('../../models');
+
+const { userComment } = require('../../models');
 
 module.exports =  async (req, res) => {
+    // 게시글 id === comment 특유의 id 
+    const usercomment = await userComment.findAll()
+    res.json({data: usercomment});
 
-    // HINT: 쿠키에 유저정보가 존재하는지 한번 다음줄에 console.log(req.cookies)를 작성해 보세요. 물론 로그인 이후 GET /users/userinfo 요청을 하셔야 합니다.
-
-    if (!req.cookies.email) {
-      res.status(401).send({ data: null, message: 'not authorized' });
-    } else {
-      let userInfo = await user.findOne({
-        where: { email: req.cookies.email },
-      });
-
-      res.json({ data: userInfo, message: 'ok' });
-    }
-
+    // get 해서 Content 특유의 id 만 받아와서
+    // comment 특유의 id 와 DB가 연결이 돼있는 상태에서
+    // 그 특유의 id 만 where 절로 불러서 보내주면 된다고 생각을 했습니다.
 };

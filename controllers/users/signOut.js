@@ -5,5 +5,6 @@ module.exports = (req, res) => {
       res.clearCookie('id');
       res.json({ data: null, message: 'ok' });
     }
-  
 };
+
+// access token null 로 변경, 해당 유저 db 삭제

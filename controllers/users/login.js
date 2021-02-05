@@ -14,13 +14,13 @@ module.exports = (req, res) => {
     },
   })
     .then((data) => {
-      console.log(data)
       if (!data) {
         // return res.status(401).send({ data: null, message: 'not authorized' });
         return res.json({ data: null, message: 'not authorized' });
       }
       delete data.dataValues.password;
-      const accessToken = generateAccessToken(data.dataValues);
+      const accessToken = generateAccessToken(data.dataValues, data.nickname);
+
       sendAccessToken(res, accessToken);
     })
     .catch((err) => {

@@ -1,11 +1,9 @@
-const { userPost } = require('../../models');
 
-
+const { usercontent } = require('../../models');
 
 module.exports = async (req, res) => {
-    let userpost = await userPost.findAll()
-    res.json({ data: userpost, message: 'ok' });
-
+    const userContent = await usercontent.findAll()
+    res.json({data: userContent});
 };
 
 

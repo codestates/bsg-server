@@ -6,7 +6,6 @@ module.exports = (req, res) => {
     if (!email || !password || !username) {
       return res.status(422).send("insufficient parameters supplied");
     }
-
     user
         .findOrCreate({
           where: {
@@ -15,7 +14,6 @@ module.exports = (req, res) => {
           defaults: {
             password: password,
             username: username,
-
           },
         })
         .then(async ([user, created]) => {
