@@ -1,3 +1,4 @@
+
 const { user, usercontent } = require('../../models');
 
 // COMPLETED
@@ -23,4 +24,3 @@ module.exports =  async (req, res) => { //req내부에는 user.id가 있다.
       res.json({message:"ok"})
     })
   }
-};

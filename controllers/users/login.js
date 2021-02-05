@@ -4,8 +4,6 @@ const {
   sendAccessToken,
 } = require('../tokenFunctions');
 
-// COMPLETED
-
 module.exports = (req, res) => {
 
   const { email, password } = req.body;
@@ -22,6 +20,7 @@ module.exports = (req, res) => {
       }
       delete data.dataValues.password;
       const accessToken = generateAccessToken(data.dataValues, data.nickname);
+
       sendAccessToken(res, accessToken);
     })
     .catch((err) => {

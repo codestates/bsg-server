@@ -21,7 +21,10 @@ module.exports = {
       return verify(token, process.env.ACCESS_SECRET);
     } catch (err) {
       // return null if invalid token
+
       return "검증되지 않은 토큰입니다";
+    }
+  }
     }
   }
 };

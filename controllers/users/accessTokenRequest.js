@@ -1,6 +1,7 @@
 const { isAuthorized } = require('../tokenFunctions');
 const { user } = require('../../models');
 
+
 // COMPLETED
 
 module.exports = (req, res) => {
