@@ -6,7 +6,7 @@ module.exports = {
     return sign(data, process.env.ACCESS_SECRET, { expiresIn: "15d" });
   },
   sendAccessToken: (res, accessToken) => {
-    res.json({ data: { accessToken }, message: "token 발급 완료!" });
+    res.json({ data: { accessToken }, message: "ok" });
   },
   resendAccessToken: (res, accessToken, data) => {
     res.json({ data: { accessToken, userInfo: data }, message: "ok" });

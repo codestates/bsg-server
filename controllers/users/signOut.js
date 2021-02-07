@@ -1,11 +1,19 @@
-module.exports = (req, res) => {
-    if (!req.cookies.id)
-      res.status(400).json({ data: null, message: 'not authorized' });
-    else {
-      res.clearCookie('id');
-      res.json({ data: null, message: 'ok' });
-    }
-  
-};
+const { user } = require('../../models');
 
-// access token null 로 변경, 해당 유저 db 삭제
+module.exports = async (req, res) => {
+    await user.findOne({
+       where: {
+           email: req.body.email
+       }
+   })
+   .then(() => {
+       user.destroy({
+           where:{
+               email: req.body.email
+           }
+       })
+       .then(() => {
+           res.status(200).send({ message: "We always wait for you"})
+       })
+   })
+}

@@ -1,13 +1,16 @@
 module.exports = {
   login: require('./users/login'),
-  accessTokenRequest: require('./users/accessTokenRequest'),
+  getUserInfo: require('./users/getUserInfo'),
   getComment: require('./users/getComment'),
   getContent: require('./users/getContent'),
-  getUserInfo: require('./users/getUserInfo'),
+  getUserRanks: require('./users/getUserRanks'),
   postComment: require('./users/postComment'),
   postContent: require('./users/postContent'),
-  signOut: require('./users/signOut'),
   signUp: require('./users/signUp'),
+  signOut: require('./users/signOut'),
   deleteComment: require('./users/deleteComment'),
   deleteContent: require('./users/deleteContent'),
+  updateContent: require('./users/updateContent'),
+  updateUserInfo: require('./users/updateUserInfo'),
+
 };

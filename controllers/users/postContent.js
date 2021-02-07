@@ -1,4 +1,4 @@
-const { usercontent } = require('../../models');
+const { userContent } = require('../../models');
 
 module.exports = async (req, res) => {
   // 1. CLIENT 에서 글 제목, 글 내용을 보낸다.
@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   const { userid, title, body } = req.body;
 
 
-  await usercontent.create({
+  await userContent.create({
     userid: `${userid}`, title: `${title}`, body:`${body}`
   })
   .then(() => {
