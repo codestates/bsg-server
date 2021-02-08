@@ -1,12 +1,32 @@
 const { user } = require('../../models');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     const { id, nickname, password } = req.body
 
-    // email 은 아무리해도 변경되지 않음.. 왜지?
-//
-    user.update({
-        nickname: nickname,
+    if (nickname) {
+        const combineNickName = function () {
+            let beforeNickname = nickname.split(' ');
+            let result = ''
+            for (let el of beforeNickname) {
+              result += el
+            }
+            return result
+          }
+
+          var setNickName = combineNickName(nickname);
+
+          var isDuplicateName = await user.findOne({
+            where: {
+                nickname: setNickName
+            }
+        })
+    }
+
+    if (isDuplicateName) {
+        res.status(403).send({ message: "해당 닉네임은 이미 다른 유저가 사용 중 입니다."})
+    }
+    await user.update({
+        nickname: setNickName,
         password: password
     }, {
         where: {
@@ -16,9 +36,9 @@ module.exports = (req, res) => {
     .then(()=> {
         res.status(200).send({ message: "update UserInfo successfully" })
     })
-}
+  }
 
-// 토큰에다가 정보를 담아서 
+// 토큰에다가 정보를 담아서 1
 
 
 // 1. isAuthorized 함수로 토큰이 유효한지 검증

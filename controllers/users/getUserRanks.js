@@ -1,5 +1,5 @@
 //리퀘스트값(닉네임)이 들어왔을때 lol api를  두번 get해주어서 ,
-// 해당 유저의 닉네임,id,tier정도등을 바디값으로 리스폰스
+// 해당 유저의 닉네임,id,tier정도등을 바디값으로 리스폰스1
 const axios = require('axios')
 
 module.exports = (req, res) => {

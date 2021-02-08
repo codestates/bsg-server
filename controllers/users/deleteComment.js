@@ -2,23 +2,24 @@ const { user, userComment } = require('../../models');
 
 // COMPLETED
 //s
-module.exports =  async (req, res) => { //req내부에는 user.id가 있다.
+module.exports =  async (req, res) => { 
+  // 삭제 할 유저 1
   const deleteUser = await user.findOne({
     where: {id: req.body.id}
   })
-
+  // 삭제 할 댓글
   const userCommentData = await userComment.findOne({
     where: {userid: deleteUser.id}
   })
-  
+  // 삭제 할 댓글의 주인이 해당 유저가 아닌 경우
   if (deleteUser.id !== userCommentData.userid) {
-    res.status(400).json({message: "no"})
+    res.status(401).json({ message: "해당 댓글 주인만 삭제할 수 있습니다." })
   } else {
     userComment.destroy({
       where:({id: req.body.commentId})
     })
     .then(() => {
-      res.json({message:"ok"})
+      res.json({ message: "Destroy Comment Successfully" })
     })
   }
 };
