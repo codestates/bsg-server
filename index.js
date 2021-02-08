@@ -1,6 +1,6 @@
 require("dotenv").config();
 const fs = require("fs");
-const https = require("https");
+const http = require("http")
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
@@ -14,13 +14,14 @@ app.use(express.urlencoded({ extended: false })); // extended 옵션의 경우, 
 
 app.use(
   cors({
-    origin: true,
+    origin: "https://www.bsgland.tk/",
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
   })
 );
 //
 app.use(cookieParser());
+app.get("/", (req,res)=>{res.send({message:"ok"})})
 app.post("/login", controllers.login);
 app.post("/postComment", controllers.postComment);
 app.post("/postContent", controllers.postContent);
@@ -44,12 +45,8 @@ const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 // 파일 존재여부를 확인하는 폴더는 서버 폴더의 package.json이 위치한 곳입니다.
 
 // 이건 혹시 몰라서 수정 안했습니다.
-const server = https
+const server = http
     .createServer(
-        {
-          key: fs.readFileSync("/Users/kim-yongho" + "/key.pem"),
-          cert: fs.readFileSync("/Users/kim-yongho" + "/cert.pem"),
-        },
         app
     )
     .listen(HTTPS_PORT, () => {
