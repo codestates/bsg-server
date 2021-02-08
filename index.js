@@ -43,6 +43,7 @@ const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 // 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
 // 파일 존재여부를 확인하는 폴더는 서버 폴더의 package.json이 위치한 곳입니다.
 
+// 이건 혹시 몰라서 수정 안했습니다.
 const server = https
     .createServer(
         {

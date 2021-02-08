@@ -1,7 +1,7 @@
 const { user, userComment } = require('../../models');
 //
 module.exports =  async (req, res) => {
-    // 게시글 id === comment 특유의 id 
+    // 게시글 id === comment 특유의 id 1
     const usercomment = await userComment.findAll({
         include: [{
             model: user,

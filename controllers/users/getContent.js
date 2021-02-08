@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
 };
 
 
-// 게시글 목록
+// 게시글 목록1
 
 // title 만
 

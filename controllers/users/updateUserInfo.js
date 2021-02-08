@@ -38,7 +38,7 @@ module.exports = async (req, res) => {
     })
   }
 
-// 토큰에다가 정보를 담아서 
+// 토큰에다가 정보를 담아서 1
 
 
 // 1. isAuthorized 함수로 토큰이 유효한지 검증

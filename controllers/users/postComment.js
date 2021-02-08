@@ -1,5 +1,5 @@
 const { userComment } = require('../../models');
-//
+//1
 module.exports = async(req, res) => {
   const { userid, comment, contentid, tier } = req.body;
 

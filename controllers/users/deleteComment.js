@@ -3,7 +3,7 @@ const { user, userComment } = require('../../models');
 // COMPLETED
 //s
 module.exports =  async (req, res) => { 
-  // 삭제 할 유저
+  // 삭제 할 유저 1
   const deleteUser = await user.findOne({
     where: {id: req.body.id}
   })

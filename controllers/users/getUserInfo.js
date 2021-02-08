@@ -15,7 +15,7 @@ module.exports = (req, res) => {
   user.findOne({ where: { nickname } })
     .then((data) => {
       if (!data) {
-        // return res.status(401).send({ data: null, message: 'not authorized' });
+        // return res.status(401).send({ data: null, message: 'not authorized' });1
         return res.json({
           data: null,
           message: 'access token has been tempered',

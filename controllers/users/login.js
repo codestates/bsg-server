@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
   })
     .then((data) => {
       if (!data) {
-        // return res.status(401).send({ data: null, message: 'not authorized' });
+        // return res.status(401).send({ data: null, message: 'not authorized' });1
         return res.status(401).send({ data: null, message: "Invalid user or Wrong password" });
       }
       delete data.dataValues.password;
