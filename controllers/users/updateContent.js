@@ -1,9 +1,10 @@
-const { usercontent } = require('../../models');
+const { userContent } = require('../../models');
+const { isAuthorized } = require('../tokenFunctions');
 
 module.exports = (req, res) => {
     const { id, title, body } = req.body;
-
-    usercontent.update({
+//
+    userContent.update({
         title:  title,
         body: body
     }, {
@@ -12,6 +13,6 @@ module.exports = (req, res) => {
         }
     })
     .then(()=> {
-        res.status(200).send({ message: "update successfully" })
+        res.status(200).send({ message: "update Content successfully" })
     })
 }

@@ -1,7 +1,7 @@
 const { user, userComment } = require('../../models');
 
 // COMPLETED
-//
+//s
 module.exports =  async (req, res) => { //req내부에는 user.id가 있다.
   const deleteUser = await user.findOne({
     where: {id: req.body.id}

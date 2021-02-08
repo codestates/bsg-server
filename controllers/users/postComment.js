@@ -1,11 +1,11 @@
 const { userComment } = require('../../models');
-
+//
 module.exports = async(req, res) => {
-  const { userid, comment, contentid } = req.body;
+  const { userid, comment, contentid, tier } = req.body;
 
 
   await userComment.create({
-    userid: `${userid}`, comment: `${comment}`, contentid: `${contentid}`
+    userid: `${userid}`, comment: `${comment}`, contentid: `${contentid}`, tier: `${tier}`
   })
   .then(() => {
     res.status(200).send({message: "comment ok"})

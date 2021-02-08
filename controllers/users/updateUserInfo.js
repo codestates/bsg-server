@@ -1,11 +1,24 @@
 const { user } = require('../../models');
-const { isAuthorized } = require('../tokenFunctions');
 
 module.exports = (req, res) => {
-    const { email, nickname, password } = req.body
+    const { id, nickname, password } = req.body
 
-    isAuthorized(req)
+    // email 은 아무리해도 변경되지 않음.. 왜지?
+//
+    user.update({
+        nickname: nickname,
+        password: password
+    }, {
+        where: {
+            id: id
+        }
+    })
+    .then(()=> {
+        res.status(200).send({ message: "update UserInfo successfully" })
+    })
 }
+
+// 토큰에다가 정보를 담아서 
 
 
 // 1. isAuthorized 함수로 토큰이 유효한지 검증

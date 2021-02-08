@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
     }
     return result
   }
-
+//
   let setNickname = combineNickName(nickname);
 
   const isEmailExists = await user.findOne({

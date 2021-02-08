@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    //
     static associate(models) {
       // define association here
       userComment.belongsTo(models.user, {
@@ -22,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
   userComment.init({
     comment: DataTypes.STRING,
     userid: DataTypes.INTEGER,
-    contentid: DataTypes.INTEGER
+    contentid: DataTypes.INTEGER,
+    userContentId: DataTypes.INTEGER,
+    tier: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'userComment',

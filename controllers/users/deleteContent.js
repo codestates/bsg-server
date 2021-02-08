@@ -9,7 +9,7 @@ module.exports =  async (req, res) => { //req내부에는 user.id가 있다.
     }
   })
 
-  // 누른 사람의 아이디가
+  // 누른 사람의 아이디가s
 
   const userContentData = await userContent.findOne({
     where: {

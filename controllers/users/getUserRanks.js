@@ -5,7 +5,7 @@ const axios = require('axios')
 module.exports = (req, res) => {
 
   const nickname = encodeURIComponent(req.body.nickname);
-
+//
   let URI = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${nickname}?api_key=${process.env.API_KEY}`
   axios.get(URI)
       .then((userid) => {

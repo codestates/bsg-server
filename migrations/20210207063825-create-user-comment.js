@@ -1,6 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    //
     await queryInterface.createTable('userComments', {
       id: {
         allowNull: false,
@@ -16,6 +17,12 @@ module.exports = {
       },
       contentid: {
         type: Sequelize.INTEGER
+      },
+      userContentId: {
+        type: Sequelize.INTEGER
+      },
+      tier: {
+        type:Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

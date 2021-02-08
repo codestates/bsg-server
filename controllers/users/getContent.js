@@ -1,8 +1,13 @@
-const { user, usercontent } = require('../../models');
-
+const { user, userContent } = require('../../models');
+//
 module.exports = async (req, res) => {
-    const userContent = await usercontent.findAll()
-    res.json({data: userContent});
+    const usercontent = await userContent.findAll({
+        include: [{
+            model: user,
+            attributes: ['nickname']
+        }]
+    })
+    res.json({data: usercontent});
 };
 
 
