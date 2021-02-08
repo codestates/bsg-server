@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     body: DataTypes.STRING,
     visits: DataTypes.INTEGER,
     userid: DataTypes.INTEGER,
-    tier: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'userContent',

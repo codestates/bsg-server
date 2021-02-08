@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     userid: DataTypes.INTEGER,
     contentid: DataTypes.INTEGER,
     userContentId: DataTypes.INTEGER,
-    tier: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'userComment',

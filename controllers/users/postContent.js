@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     userid: `${userid}`, title: `${title}`, body:`${body}`, tier: `${tier}`
   })
   .then(() => {
-    res.status(200).send({message: "ok"})
+    res.status(200).send({message: "Post Content Successfully"})
   }).catch(err => {
     res.status(401).send({message: "You do not have permission to access the content"})
   })

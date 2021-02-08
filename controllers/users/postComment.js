@@ -8,7 +8,7 @@ module.exports = async(req, res) => {
     userid: `${userid}`, comment: `${comment}`, contentid: `${contentid}`, tier: `${tier}`
   })
   .then(() => {
-    res.status(200).send({message: "comment ok"})
+    res.status(200).send({message: "Post Comment Successfully"})
   }).catch(err => {
     res.status(401).send({message: "You do not have permission to access the comment"})
   })
