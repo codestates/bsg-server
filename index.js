@@ -2,6 +2,7 @@ require("dotenv").config();
 const fs = require("fs");
 const https = require("https");
 const cors = require("cors");
+const http = require("http");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const app = express();
@@ -14,13 +15,15 @@ app.use(express.urlencoded({ extended: false })); // extended 옵션의 경우, 
 
 app.use(
   cors({
-    origin: true,
-    credentials: true,
+    origin: "https://www.bsgland.tk/",
+//    credentials:true,
     methods: ["GET", "POST", "OPTIONS"],
   })
 );
 //
 app.use(cookieParser());
+
+app.get("/", (req,res)=>{res.send({message:"ok"})});
 app.post("/login", controllers.login);
 app.post("/postComment", controllers.postComment);
 app.post("/postContent", controllers.postContent);
@@ -43,12 +46,12 @@ const HTTPS_PORT = process.env.HTTPS_PORT || 4000;
 // 만약 인증서 파일이 존재하지 않는경우, http 프로토콜을 사용하는 서버를 실행합니다.
 // 파일 존재여부를 확인하는 폴더는 서버 폴더의 package.json이 위치한 곳입니다.
 
-const server = https
+const server = http
     .createServer(
-        {
-          key: fs.readFileSync("/Users/kim-yongho" + "/key.pem"),
-          cert: fs.readFileSync("/Users/kim-yongho" + "/cert.pem"),
-        },
+//        {
+//          key: fs.readFileSync("/Users/kim-yongho" + "/key.pem"),
+//          cert: fs.readFileSync("/Users/kim-yongho" + "/cert.pem"),
+//        },
         app
     )
     .listen(HTTPS_PORT, () => {
