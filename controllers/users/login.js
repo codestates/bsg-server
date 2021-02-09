@@ -1,4 +1,4 @@
-const { user } = require('../../models');
+const { user } = require("../../models");
 const {
   generateAccessToken,
   sendAccessToken,
