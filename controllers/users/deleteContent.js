@@ -1,4 +1,4 @@
-const { user, userContent } = require('../../models');
+const { user, userContent } = require("../../models");
 
 // COMPLETED
 //

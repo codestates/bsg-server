@@ -1,4 +1,5 @@
-const { user, userComment } = require('../../models');
+const { user } = require("../../models");
+const userComment = require("../../models/usercomment");
 
 // COMPLETED
 //s

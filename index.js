@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false })); // extended 옵션의 경우, 
 
 app.use(
   cors({
-    origin: "https://www.bsgland.tk/",
+    origin: "*",
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
   })

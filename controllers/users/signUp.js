@@ -1,4 +1,4 @@
-const { user } = require('../../models');
+const { user } = require("../../models");
 
 module.exports = async (req, res) => {
   const { email, nickname, password } = req.body
@@ -15,11 +15,11 @@ module.exports = async (req, res) => {
   let setNickname = combineNickName(nickname);
 
   const isEmailExists = await user.findOne({
-    where: {email: email}
+    where: { email: email }
   });
 
   const isNicknameExists = await user.findOne({
-    where:{nickname: setNickname}
+    where: { nickname: setNickname }
   })
 
 
