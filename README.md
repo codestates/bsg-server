@@ -32,7 +32,7 @@ ___
 ![](https://images.velog.io/images/pp8960/post/7d09ef2b-1b75-48b5-ace0-867d89672448/bAckend.png)
 ___
 # :information_desk_person: 우리를 소개합니다.
-## [유재우](https://github.com/yuJaeWoo) :checkered_flag: Backend
-## [김용호](https://github.com/Yongho5580) :checkered_flag: Backend
-## [박준석](https://github.com/wnstjr0317) :checkered_flag: Team Leader / Frontend
-## [이상철](https://github.com/ning1315) :checkered_flag: Frontend
+## [유재우](https://github.com/yuJaeWoo) 🏴 Backend
+## [김용호](https://github.com/Yongho5580) 🏴 Backend
+## [박준석](https://github.com/wnstjr0317) 🏁 Team Leader / Frontend
+## [이상철](https://github.com/ning1315) 🏁 Frontend
