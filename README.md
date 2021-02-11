@@ -34,5 +34,5 @@ ___
 # :information_desk_person: 우리를 소개합니다.
 ## [유재우](https://github.com/yuJaeWoo) :checkered_flag: Backend
 ## [김용호](https://github.com/Yongho5580) :checkered_flag: Backend
-## [박준석](https://github.com/wnstjr0317) :checkered_flag: Frontend
+## [박준석](https://github.com/wnstjr0317) :checkered_flag: Team Leader / Frontend
 ## [이상철](https://github.com/ning1315) :checkered_flag: Frontend
